@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "Project": {
+      "title": "Portfolio Project",
+      "description": "A design project in the portfolio",
+      "type": "object",
+      "properties": {
+        "id": { "type": "number" },
+        "title": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "ar": { "type": "string" }
+          },
+          "required": ["en", "ar"]
+        },
+        "category": {
+          "type": "object",
+          "properties": {
+            "en": { "type": "string" },
+            "ar": { "type": "string" }
+          },
+          "required": ["en", "ar"]
+        },
+        "image": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "order": { "type": "number" }
+      },
+      "required": ["title", "category", "image", "tags", "order"]
+    },
+    "GlobalSettings": {
+      "title": "Global Settings",
+      "description": "Translations and global configuration",
+      "type": "object",
+      "properties": {
+        "translations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "en": { "type": "string" },
+              "ar": { "type": "string" }
+            },
+            "required": ["en", "ar"]
+          }
+        },
+        "profileImage": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "socialLinks": {
+          "type": "object",
+          "properties": {
+            "instagram": { "type": "string" },
+            "behance": { "type": "string" },
+            "linkedin": { "type": "string" }
+          }
+        }
+      }
+    }
+  },
+  "firestore": {
+    "projects": {
+      "schema": "Project",
+      "description": "Collection of portfolio projects"
+    },
+    "settings": {
+      "schema": "GlobalSettings",
+      "description": "Global application settings and translations"
+    }
+  }
+}
